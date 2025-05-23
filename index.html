@@ -2,48 +2,39 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>ROM Download Hub</title>
+  <title>TheGorillaModders Nostalgic Games Hub ROM Files</title>
   <style>
     body {
       font-family: Arial, sans-serif;
-      background: #1e1e1e;
+      background: #000000;
       color: #fff;
       padding: 20px;
     }
     h1 {
-      color: #00ffcc;
+      color: #ff0000;
     }
     .rom-list {
       margin-top: 20px;
     }
     .rom-entry {
-      background: #2a2a2a;
+      background: #222222;
       padding: 10px;
       margin-bottom: 10px;
       border-radius: 5px;
-    }
-    .rom-entry button {
-      margin-left: 10px;
-      padding: 5px 10px;
-      background: #00ffcc;
-      color: black;
-      border: none;
-      border-radius: 4px;
       cursor: pointer;
     }
-    .rom-entry button:hover {
-      background: #00ddaa;
+    .rom-entry:hover {
+      background: #990000;
     }
   </style>
 </head>
 <body>
 
-<h1>ROM Download Hub</h1>
+<h1>TheGorillaModders Nostalgic Games Hub ROM Files</h1>
 
 <div class="rom-list" id="romList"></div>
 
 <script>
-  // Customize your ROM entries here
   const roms = [
     { name: "Super Jump Bros", file: "super_jump.tgm" },
     { name: "Mystery Dungeon", file: "mystery_dungeon.tgm" },
@@ -55,10 +46,8 @@
   roms.forEach(rom => {
     const div = document.createElement("div");
     div.className = "rom-entry";
-    div.innerHTML = `
-      ${rom.name}
-      <button onclick="downloadROM('${rom.file}')">Download</button>
-    `;
+    div.textContent = rom.name;
+    div.onclick = () => downloadROM(rom.file);
     romList.appendChild(div);
   });
 
