@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ROM Download Hub</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #1e1e1e;
+      color: #fff;
+      padding: 20px;
+    }
+    h1 {
+      color: #00ffcc;
+    }
+    .rom-list {
+      margin-top: 20px;
+    }
+    .rom-entry {
+      background: #2a2a2a;
+      padding: 10px;
+      margin-bottom: 10px;
+      border-radius: 5px;
+    }
+    .rom-entry button {
+      margin-left: 10px;
+      padding: 5px 10px;
+      background: #00ffcc;
+      color: black;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .rom-entry button:hover {
+      background: #00ddaa;
+    }
+  </style>
+</head>
+<body>
+
+<h1>ROM Download Hub</h1>
+
+<div class="rom-list" id="romList"></div>
+
+<script>
+  // Customize your ROM entries here
+  const roms = [
+    { name: "Super Jump Bros", file: "super_jump.tgm" },
+    { name: "Mystery Dungeon", file: "mystery_dungeon.tgm" },
+    { name: "Pixel Racer X", file: "pixel_racer.tgm" }
+  ];
+
+  const romList = document.getElementById("romList");
+
+  roms.forEach(rom => {
+    const div = document.createElement("div");
+    div.className = "rom-entry";
+    div.innerHTML = `
+      ${rom.name}
+      <button onclick="downloadROM('${rom.file}')">Download</button>
+    `;
+    romList.appendChild(div);
+  });
+
+  function downloadROM(filename) {
+    const link = document.createElement('a');
+    link.href = `ROMS/${filename}`;
+    link.download = filename;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  }
+</script>
+
+</body>
+</html>
